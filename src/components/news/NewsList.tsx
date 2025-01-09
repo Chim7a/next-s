@@ -13,7 +13,6 @@ const NewsList = () => {
   const [loading, setLoading] = useState(false);
   async function getAllNews() {
     setLoading(true);
-
     try {
       const response = await fetch(
         `https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.NEXT_PUBLIC_NEWS_APIKEY}`
@@ -31,10 +30,12 @@ const NewsList = () => {
     getAllNews();
   }, []);
 
-  if (loading === false) {
-    <div className="grid h-screen place-items-center">
-      <h1 className="text-2xl text-red-500 animate-pulse">Loading News</h1>
-    </div>;
+  if (loading === true) {
+    return (
+      <div className="grid h-screen place-items-center">
+        <h1 className="text-2xl text-red-500 animate-pulse">Loading News</h1>
+      </div>
+    );
   }
 
   return (
