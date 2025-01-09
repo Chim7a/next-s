@@ -11,6 +11,8 @@ interface NewsItem {
 const NewsList = () => {
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(false);
+  console.log(process.env.NEXT_PUBLIC_NEWS_APIKEY);
+
   async function getAllNews() {
     setLoading(true);
     try {
